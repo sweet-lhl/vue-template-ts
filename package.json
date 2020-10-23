@@ -5,10 +5,10 @@
   "description": "基于Vue+Webpack+Typescript项目模板",
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack-dev-server --config 'webpack/webpack.base.ts' --profile",
-    "build": "webpack --config 'webpack/webpack.base.ts' --mode=production",
+    "build": "cross-env NODE_ENV=production webpack --config 'webpack/webpack.base.ts' --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "quanchuan@persagy.com",
+  "author": "lhlcr@foxmail.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
@@ -42,6 +42,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-vue": "^6.2.2",
     "fibers": "^5.0.0",
+    "file-loader": "^6.1.1",
     "handlebars": "^4.7.6",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-loader": "^1.1.0",
@@ -67,6 +68,7 @@
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7",
     "vue-i18n": "^8.20.0",
+    "url-loader": "^4.1.1",
     "vue-loader": "^15.9.3",
     "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11",

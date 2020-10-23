@@ -41,7 +41,7 @@ const {
     name: string
 } = packageInfo;
 
-const publicPath: string = url.resolve(realmName, isDevelopment ? '/' : projectName); // publicPath & url
+const publicPath: string = url.resolve(realmName, isDevelopment ? '/' : `${projectName}/`); // publicPath & url
 
 const envVariable = Object.assign( // 工作区注入的环境变量
     { BASE_URL: publicPath, VERSION: version },
@@ -388,9 +388,9 @@ config.module // video-loader
 
 config.module // font-loader
     .rule('font')
-        .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/)
+        .test(/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/)
             .include
-                .add(path.resolve(workDir, 'src'))
+                .add(path.resolve(workDir))
                 .end()
             .use('font')
                 .loader('url-loader')
