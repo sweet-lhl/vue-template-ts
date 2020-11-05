@@ -1,0 +1,123 @@
+// base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #30B08F;
+
+// sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:#304156;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+
+$background-blue: #131529;
+$link-color: #0091FF;
+$white-color: #FFFFFF;
+$grey-color: rgba(67,69,86,1);
+$active-color: rgba(1,145,255,1);
+$green: #27C08B;
+
+$sideBarWidth: 210px;
+
+@for $index from 1 through 50 {
+  .text-size-#{$index} { font-size: #{$index}px; }
+  .border-width-#{$index} {border-width:#{$index}px;}
+  .column-width-#{$index} {-webkit-column-width:  #{$index}px;column-width:  #{$index}px;}
+  .outline-width-#{$index} {outline-width:  #{$index}px;}
+  .outline-offset-#{$index} {outline-offset:  #{$index}px;}
+  .word-spacing-#{$index} {word-spacing:  #{$index}px;}
+  .letter-spacing-#{$index} {letter-spacing:  #{$index}px;}
+  .text-indent-#{$index} {text-indent:  #{$index}px;}
+  .line-height-#{$index} {line-height: #{$index}px;}
+  .tab-size-#{$index} {-moz-tab-size:#{$index};-o-tab-size:#{$index};tab-size:#{$index};}
+  .opacity-#{$index} {opacity:#{$index};}
+  .margin-#{$index} {margin:  #{$index}px;}
+  .margin-top-#{$index} {margin-top:  #{$index}px;}
+  .margin-right-#{$index} {margin-right:  #{$index}px;}
+  .margin-bottom-#{$index} {margin-bottom:  #{$index}px;}
+  .margin-left-#{$index} {margin-left:  #{$index}px;}
+  .padding-top-#{$index} {padding-top:  #{$index}px;}
+  .padding-#{$index} {padding:  #{$index}px;}
+  .padding-right-#{$index} {padding-right:  #{$index}px;}
+  .padding-bottom-#{$index} {padding-bottom:  #{$index}px;}
+  .padding-left-#{$index} {padding-left:  #{$index}px;}
+  .z-index-#{$index} {z-index: #{$index};}
+  .zoom-#{$index} {zoom: #{$index};}
+  .text-weight-#{$index} {font-weight: #{$index};}
+  .flex-order-#{$index} {-webkit-box-ordinal-group: #{$index};-ms-flex-order: #{$index};order: #{$index};}
+  .flex-grow-#{$index} {-webkit-box-flex: #{$index};-ms-flex-positive: #{$index};flex-grow: #{$index};}
+  .flex-shrink-#{$index} {-ms-flex-negative: #{$index};flex-shrink: #{$index};}
+  .flex-shrink-#{$index} {-ms-flex-negative: #{$index};flex-shrink: #{$index};}
+  .transition-duration-#{$index} {-webkit-transition-duration: #{$index}s;-o-transition-duration: #{$index}s;transition-duration: #{$index}s;}
+  .transition-delay-#{$index} {-webkit-transition-delay: #{$index}s;-o-transition-delay: #{$index}s;transition-delay: #{$index}s;}
+}
+
+
+html,body{
+  height: 100%;
+}
+
+.overflow-scroll-y,.overflow-scroll-x{
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+p{
+  margin: 0;
+}
+
+.nc_wrapper{ // 阿里滑块样式
+  width: 100% !important;
+
+  .nc_scale{
+    height: 50px !important;
+
+    .nc_iconfont{
+      height: 100% !important;
+      line-height: 50px;
+    }
+  }
+
+  .btn_ok{
+    color: #27c08b!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nc-lang-cnt{
+    height: 100% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nc_scale div.nc_bg {
+    background-color: #27c08b;
+    // background: linear-gradient(to right,#44ecae, #42cac2); /* 滑过时的背景色 */
+  }
+
+  .nc_scale .scale_text2 {
+    color: #fff !important; /* 滑过时的字体颜色 */
+  }
+
+  .nc-lang-cnt{
+    font-size: 14px !important;
+  }
+}
+
+.errloading{ // 阿里滑块样式(出错)
+  width: 100% !important;
+}
+
+

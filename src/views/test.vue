@@ -66,7 +66,7 @@ export default class Test extends Vue {
 </script>
 
 <style scoped>
-.ss{
+.ss {
   margin: 20px;
 }
 </style>

@@ -3,11 +3,18 @@ import Router, { NavigationGuardNext, Route, RouteConfig } from 'vue-router'; //
 import url from 'url';
 import cookies from 'cookies-js';
 
+
+// @ts-ignore
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css' // progress bar style
+
 import i18n, { setI18nLanguage } from './i18n-setup';
 import routes from '../routes'
 import VueI18n from "vue-i18n";
 
 Vue.use(Router);
+
+NProgress.configure({showSpinner: false}) // NProgress Configuration
 
 type _Position = { x: number; y: number };
 
@@ -49,6 +56,7 @@ const routerNext = { // router进入页面前执行的事件
         return Promise.resolve(true);
     },
     setRequiresAuth({ meta }: any): Promise<boolean | string> { // 路由鉴权
+        NProgress.start()
         const { requiresAuth }: { requiresAuth: boolean } = meta;
         if (requiresAuth) return Promise.resolve(cookies.get('token') || '/login');
         return Promise.resolve(true);
@@ -73,9 +81,10 @@ router.beforeEach((to: Route, from: Route, next: NavigationGuardNext<Vue>): Prom
         default:
             return next();
     }
-}).catch((error: any): void => next(error)));
+}).catch((error: any): void => next(error)).finally(NProgress.done()));
 
 router.afterEach((/* to: Route, from: Route */): void => { // 自定义元素滚动到顶部
+    NProgress.done()
     const el: HTMLElement | null = document.getElementById('app');
     if (el) el.scrollTop = <number>0;
 });

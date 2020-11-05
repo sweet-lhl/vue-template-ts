@@ -13,12 +13,17 @@ import {DefaultData} from "vue/types/options";
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import './assets/styleSheet/global.css';
+
 Vue.use(Vant);
 
 import store from './store';
 import router from './setup/router-setup';
 import i18n from './setup/i18n-setup';
 import App from './App.vue';
+
+import components from './plugins/components';
+Vue.use(components);
 
 // Compile with --noImplicitThis
 <VueConstructor>new Vue(<ComponentOptions<Vue, DefaultData<Vue>, undefined, undefined, undefined, undefined>>{

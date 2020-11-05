@@ -20,6 +20,7 @@ const StyleLintPlugin = require('stylelint');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const Handlebars = require('handlebars');
+const pxToRem = require('postcss-pxtorem');
 
 const packageInfo = require('../package.json');
 const httpProxy = require('./webpack.proxy');
@@ -51,7 +52,7 @@ const envVariable = Object.assign( // 工作区注入的环境变量
 );
 
 /// <reference path="html-webpack-plugin/typings.d.ts" />
-const htmlWebpackOptions: HtmlWebpackType.ProcessedOptions = { // doc: https://github.com/jantimon/html-webpack-plugin#options
+const htmlWebpackOptions: { template: any; cache: boolean; favicon: boolean; showErrors: boolean; chunks: string; title: string; chunksSortMode: string; inlineSource: string; xhtml: boolean; minify: boolean; filename: string; compile: boolean; templateParameters: boolean; meta: boolean; templateContent: boolean; scriptLoading: string; excludeChunks: any[]; inject: boolean; hash: boolean } = { // doc: https://github.com/jantimon/html-webpack-plugin#options
     title: 'vue-template',
     filename: 'index.html',
     template: path.join(workDir, 'public','index.html'),
@@ -226,6 +227,10 @@ function createCSSRule (lang: string, test: RegExp, loader?: string, options?: {
 
         rule.use('postcss').loader('postcss-loader').options({
             plugins: [
+                pxToRem({
+                    rootValue: 37.5,
+                    propList: ['*'],
+                }),
                 require('autoprefixer'),
                 require('postcss-import')(),
                 new StyleLintPlugin({ files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'], fix: true})],
@@ -242,7 +247,7 @@ function createCSSRule (lang: string, test: RegExp, loader?: string, options?: {
 createCSSRule('css', /\.css$/); // css-loader
 createCSSRule('postcss', /\.p(ost)?css$/); // postcss-loader
 createCSSRule('scss', /\.s[ac]ss$/, 'sass-loader', {  // sass-loader
-    // additionalData: require('@/assets/sass/var.scss'), // 全局变量可加载
+    additionalData: '@import "./src/assets/styleSheet/custom.scss";' , // 全局变量可加载
     implementation: require('sass'),
     // indentedSyntax: true, // sass缩进语法的支持，sass-loader version >= 8  // FIXME 由于版本文档无法支撑问题，无法知晓当前配置项是否生效
     sassOptions: {
